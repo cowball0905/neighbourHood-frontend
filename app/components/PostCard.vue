@@ -3,9 +3,8 @@
     <template #header>
       <div class="post-header">
         <div class="post-author">
-          <el-avatar :size="40" />
           <div class="author-info">
-            <p class="author-name">{{ post.user?.username }}</p>
+            <NuxtLink :to="`/profile/${post.user?.uuid}`"><p class="author-name">{{ post.user?.username }}</p></NuxtLink>
             <p class="post-time">{{ post?.createTime ? new Date(post.createTime).toLocaleString('en-HK', {
               timeZone:
                 "Asia/Hong_Kong"

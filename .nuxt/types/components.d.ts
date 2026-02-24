@@ -22,6 +22,7 @@ interface _GlobalComponents {
   'ChatMeMsg': typeof import("../../app/components/chat/meMsg.vue").default
   'ChatOtherMsg': typeof import("../../app/components/chat/otherMsg.vue").default
   'ChatPickTimeDialog': typeof import("../../app/components/chat/pickTimeDialog.vue").default
+  'ChatPutRatingDialog': typeof import("../../app/components/chat/putRatingDialog.vue").default
   'ChatRequestMsg': typeof import("../../app/components/chat/requestMsg.vue").default
   'ChatStartChatDialog': typeof import("../../app/components/chat/startChatDialog.vue").default
   'LoginBox': typeof import("../../app/components/loginBox.vue").default
@@ -465,6 +466,7 @@ interface _GlobalComponents {
   'LazyChatMeMsg': LazyComponent<typeof import("../../app/components/chat/meMsg.vue").default>
   'LazyChatOtherMsg': LazyComponent<typeof import("../../app/components/chat/otherMsg.vue").default>
   'LazyChatPickTimeDialog': LazyComponent<typeof import("../../app/components/chat/pickTimeDialog.vue").default>
+  'LazyChatPutRatingDialog': LazyComponent<typeof import("../../app/components/chat/putRatingDialog.vue").default>
   'LazyChatRequestMsg': LazyComponent<typeof import("../../app/components/chat/requestMsg.vue").default>
   'LazyChatStartChatDialog': LazyComponent<typeof import("../../app/components/chat/startChatDialog.vue").default>
   'LazyLoginBox': LazyComponent<typeof import("../../app/components/loginBox.vue").default>

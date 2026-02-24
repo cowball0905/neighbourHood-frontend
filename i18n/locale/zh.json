@@ -258,6 +258,10 @@
   "acceptHelp": "已同意",
   "meetingTime": "約定時間",
   "send": "傳送",
-  "sendHelp": "請求幫助",
-  "startChat": "開始對話"
+  "sendHelp": "發起幫助",
+  "startChat": "開始對話",
+  "willing": "願意幫助",
+  "giveRating": "留下你的評價",
+  "ratingMarks": "分數",
+  "ratingComment": "留言"
 }

@@ -33,6 +33,13 @@ export const useAuthStore = defineStore("auth", {
       }
     },
     async logout(){
+      this.isLogin=false;
+      this.userInfo =  {
+        username: "",
+        email: "",
+        uuid: "",
+        token: ""
+      }
       Storage.remove("auth")
     }
   }

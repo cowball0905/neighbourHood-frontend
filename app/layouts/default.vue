@@ -56,10 +56,6 @@
             <el-icon><DocumentCopy /></el-icon>
             <span>{{ $t('posts') }}</span>
           </el-menu-item>
-          <el-menu-item index="/communities" @click="handleMenuClick('/communities')" :class="{ 'menu-active': activeMenuPath.includes('/communities') }">
-            <el-icon><Location /></el-icon>
-            <span>{{ $t('nearbyShops') }}</span>
-          </el-menu-item>
           <el-menu-item index="/chat" @click="handleMenuClick('/chat')" :class="{ 'menu-active': activeMenuPath.includes('/chat') }">
             <el-icon><ChatLineRound /></el-icon>
             <span>{{ $t('messages') }}</span>
@@ -128,7 +124,6 @@ onUnmounted(()=>{
   unsubscribe(`/topic/user/${user?.value?.uuid}`);
 })
 
-// Load user profile from localStorage
 const loadUserProfile = () => {
   const savedProfile = localStorage.getItem('userProfile')
   if (savedProfile) {
@@ -136,11 +131,9 @@ const loadUserProfile = () => {
   }
 }
 
-// Load profile on mount
 onMounted(() => {
   loadUserProfile()
   
-  // Listen for storage changes (when profile is updated in another tab or by profile page)
   window.addEventListener('storage', () => {
     loadUserProfile()
   })
@@ -204,10 +197,6 @@ const goToCreatePost = () => {
   font-weight: 700;
   color: #333;
   transition: color 0.3s;
-}
-
-.app-title:hover {
-  color: #07b981;
 }
 
 .header-center {
@@ -276,26 +265,6 @@ const goToCreatePost = () => {
   transition: color 0.3s;
 }
 
-.sidebar-menu :deep(.el-menu-item:hover) {
-  color: #07b981 !important;
-  background-color: #e8f4fd !important;
-}
-
-.sidebar-menu :deep(.el-menu-item:hover .el-icon) {
-  color: #07b981 !important;
-}
-
-.sidebar-menu :deep(.el-menu-item.is-active),
-.sidebar-menu :deep(.el-menu-item.menu-active) {
-  color: #07b981 !important;
-  background-color: #e8f4fd !important;
-}
-
-.sidebar-menu :deep(.el-menu-item.is-active .el-icon),
-.sidebar-menu :deep(.el-menu-item.menu-active .el-icon) {
-  color: #07b981 !important;
-}
-
 .sidebar-others {
   padding: var(--spacing-unit, 16px);
   border-top: 1px solid #f0f0f0;
@@ -304,10 +273,6 @@ const goToCreatePost = () => {
 .sidebar-others :deep(.el-button) {
   color: #666;
   font-size: var(--base-font-size, 14px);
-}
-
-.sidebar-others :deep(.el-button:hover) {
-  color: #07b981;
 }
 
 .app-main {
@@ -371,22 +336,6 @@ const goToCreatePost = () => {
 }
 
 .sidebar-menu .el-menu-item:hover {
-  color: #07b981 !important;
   background-color: #e8f4fd !important;
-}
-
-.sidebar-menu .el-menu-item:hover .el-icon {
-  color: #07b981 !important;
-}
-
-.sidebar-menu .el-menu-item.is-active,
-.sidebar-menu .el-menu-item.menu-active {
-  color: #07b981 !important;
-  background-color: #e8f4fd !important;
-}
-
-.sidebar-menu .el-menu-item.is-active .el-icon,
-.sidebar-menu .el-menu-item.menu-active .el-icon {
-  color: #07b981 !important;
 }
 </style>

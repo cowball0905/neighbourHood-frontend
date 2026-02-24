@@ -259,5 +259,9 @@
   "acceptHelp": "Accepted the Help",
   "send": "Send",
   "sendHelp": "Request Help",
-  "startChat": "Start the Chat"
+  "startChat": "Start the Chat",
+  "willing": "is willing to help",
+  "giveRating": "Leave a comment",
+  "ratingMarks": "Rating",
+  "ratingComment": "Comment"
 }

@@ -1,8 +1,8 @@
 <template>
   <el-dropdown trigger="click" :hide-on-click="false">
-    <span class="el-dropdown-link">
+    <div class="el-dropdown-link">
       <slot></slot>
-    </span>
+    </div>
     <template #dropdown>
       <el-dropdown-menu>
         <div class="droparea">
@@ -51,5 +51,11 @@ if(!error){
     padding:20px;
     display: flex;
     gap:12px;
+}
+.el-dropdown-link{
+  width:100%;
+}
+.el-dropdown{
+  width:100%;
 }
 </style>

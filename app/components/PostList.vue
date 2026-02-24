@@ -12,7 +12,6 @@
 import type { PropType } from 'vue';
 import { getPost } from '~/api/post';
 import type { Post } from '~/types/post';
-import startChatDialog from './chat/startChatDialog.vue';
 import StartChatDialog from './chat/startChatDialog.vue';
 
 const {user} = useUser()

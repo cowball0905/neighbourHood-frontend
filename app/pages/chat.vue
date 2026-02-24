@@ -18,10 +18,15 @@
             <p>{{ chatroom.user2.username }}</p>
           </div>
           <div class="chatroom-accept-button">
-            <el-button text @click="toggleDialog">{{ $t('sendHelp') }}</el-button>
-            <PickTimeDialog v-if="user?.uuid === chatroom.user1.uuid && !chatroom.post.acceptUser?.uuid" :dialog-visible="dialogVisible" :post-i-d="chatroom.post.id" :recipient-uuid="recipientId" :default-time="[chatroom.post.startTime ?? new Date(), chatroom.post.endTime ?? new Date()]" @toggle-dialog="toggleDialog"/>
-            <p v-else-if="user?.uuid == chatroom.post.acceptUser?.uuid">Accepted</p>
-            <p v-else-if="user?.uuid === chatroom.user1.uuid && chatroom.post.acceptUser?.uuid !== user.uuid">The
+            <div v-if="userInfo.uuid === chatroom.user1.uuid && !chatroom.post.acceptUser?.uuid">
+              <el-button text @click="toggleDialog">{{ $t('sendHelp') }}</el-button>
+              <PickTimeDialog :dialog-visible="dialogVisible" :post-i-d="chatroom.post.id" :recipient-uuid="recipientId" :default-time="[chatroom.post.startTime ?? new Date(), chatroom.post.endTime ?? new Date()]" @toggle-dialog="toggleDialog"/>
+            </div>
+            <div v-else-if="userInfo.uuid == chatroom.post.acceptUser?.uuid || userInfo.uuid == chatroom.user2.uuid">
+              <el-button text @click="toggleDialog">Test</el-button>
+              <PutRatingDialog :dialog-visible="dialogVisible" :post-i-d="chatroom.post.id" :sender-i-d="userInfo.uuid" :recipient-i-d="recipientId" @toggle-dialog="toggleDialog"/>
+            </div>
+            <p v-else-if="userInfo.uuid === chatroom.user1.uuid && chatroom.post.acceptUser?.uuid !== userInfo.uuid">The
               request
               is held by others</p>
           </div>
@@ -29,19 +34,19 @@
         <ul>
           <li
             v-for="msg in (chatroom?.messages?.sort((a, b) => new Date(a.sendTime).getTime() - new Date(b.sendTime).getTime()) ?? [])">
-            <RequestMsg class="own" v-if="msg.type === MessageType.REQUEST && user?.uuid === msg.sender.uuid"
+            <RequestMsg class="own" v-if="msg.type === MessageType.REQUEST && userInfo.uuid === msg.sender.uuid"
               :time="msg.sendTime" :is-accepter="false" :requestor-name="chatroom?.user1.username" :help-time="msg.content"
               :recipient-id="chatroom?.user1.uuid" :post-i-d="chatroom?.post.id" />
-            <RequestMsg class="notown" v-else-if="msg.type === MessageType.REQUEST && user?.uuid !== msg.sender.uuid"
+            <RequestMsg class="notown" v-else-if="msg.type === MessageType.REQUEST && userInfo.uuid !== msg.sender.uuid"
               :time="msg.sendTime" :is-accepter="true" :requestor-name="chatroom?.user1.username" :help-time="msg.content"
               :recipient-id="chatroom?.user1.uuid" :post-i-d="chatroom?.post.id" />
-            <AcceptMsg class="own" v-if="msg.type === MessageType.ACCEPT && user?.uuid === msg.sender.uuid"
+            <AcceptMsg class="own" v-if="msg.type === MessageType.ACCEPT && userInfo.uuid === msg.sender.uuid"
               :time="msg.sendTime" :is-accepter="false" :accepter-name="chatroom?.user2.username"
               :recipient-id="chatroom?.user1.uuid" />
-            <AcceptMsg class="notown" v-else-if="msg.type === MessageType.ACCEPT && user?.uuid !== msg.sender.uuid"
+            <AcceptMsg class="notown" v-else-if="msg.type === MessageType.ACCEPT && userInfo.uuid !== msg.sender.uuid"
               :time="msg.sendTime" :is-accepter="true" :accepter-name="chatroom?.user2.username"
               :recipient-id="chatroom?.user1.uuid" />
-            <MeMsg class="own" v-else-if="msg.type === MessageType.NORMAL && user?.uuid === msg.sender.uuid"
+            <MeMsg class="own" v-else-if="msg.type === MessageType.NORMAL && userInfo.uuid === msg.sender.uuid"
               :time="msg.sendTime" :content="msg.content" />
             <OtherMsg class="notown" v-else-if="msg.type === MessageType.NORMAL" :time="msg.sendTime"
               :content="msg.content" />
@@ -66,9 +71,10 @@ import { useSocket } from '../composables/socket';
 import RequestMsg from '~/components/chat/requestMsg.vue';
 import AcceptMsg from '~/components/chat/acceptMsg.vue';
 import PickTimeDialog from '~/components/chat/pickTimeDialog.vue';
+import PutRatingDialog from '~/components/chat/putRatingDialog.vue';
+import { useAuthStore } from '../stores/useAuthStore';
 
 const conversations = ref<Conversation[]>()
-const { user } = useUser();
 const chatroom = ref<Conversation>()
 const inputValue = ref("")
 const selectedStyle = {
@@ -80,6 +86,8 @@ const firstStyle = {
 const { subscribe, unsubscribe } = useSocket();
 
 const dialogVisible = ref(false)
+
+const {userInfo} = useAuthStore();
 
 function toggleDialog(){
   dialogVisible.value = !dialogVisible.value;
@@ -131,7 +139,7 @@ function handleSubmit() {
 }
 
 const recipientId = computed(() => {
-  return user.value?.uuid === chatroom.value?.user1.uuid ? chatroom.value?.user2.uuid : chatroom.value?.user1.uuid
+  return userInfo?.uuid === chatroom.value?.user1.uuid ? chatroom.value?.user2.uuid : chatroom.value?.user1.uuid
 })
 
 

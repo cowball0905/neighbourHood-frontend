@@ -2122,7 +2122,22 @@ _JCiN1CBZikAM0iqo0si5zwwafSNb4s8i12Bx07JD_QU,
 _DmqJjox89VGizsNHjSwxP1TmkjEMYn4wvjPmsqBQEuM
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"272ff-1z1GiQ05VQgIKW/NH1A/Xn8FI5k\"",
+    "mtime": "2026-02-24T02:36:09.929Z",
+    "size": 160511,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"68969-pDTwT8STT8v/Mk3tGbPTRyfzUIU\"",
+    "mtime": "2026-02-24T02:36:09.929Z",
+    "size": 428393,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -3143,6 +3158,10 @@ var acceptHelp$1 = "Accepted the Help";
 var send$1 = "Send";
 var sendHelp$1 = "Request Help";
 var startChat$1 = "Start the Chat";
+var willing$1 = "is willing to help";
+var giveRating$1 = "Leave a comment";
+var ratingMarks$1 = "Rating";
+var ratingComment$1 = "Comment";
 const en = {
 	neighbourHood: neighbourHood$1,
 	login: login$1,
@@ -3404,7 +3423,11 @@ const en = {
 	acceptHelp: acceptHelp$1,
 	send: send$1,
 	sendHelp: sendHelp$1,
-	startChat: startChat$1
+	startChat: startChat$1,
+	willing: willing$1,
+	giveRating: giveRating$1,
+	ratingMarks: ratingMarks$1,
+	ratingComment: ratingComment$1
 };
 
 const en$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -3502,6 +3525,7 @@ const en$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   general: general$1,
   geolocationNotSupported: geolocationNotSupported$1,
   gettingLocation: gettingLocation$1,
+  giveRating: giveRating$1,
   help: help$1,
   helpCenter: helpCenter$1,
   helpCenterComingSoon: helpCenterComingSoon$1,
@@ -3602,6 +3626,8 @@ const en$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   questNotifications: questNotifications$1,
   questRequests: questRequests$1,
   questUpdatedSuccess: questUpdatedSuccess$1,
+  ratingComment: ratingComment$1,
+  ratingMarks: ratingMarks$1,
   recentPosts: recentPosts$1,
   redeem: redeem$1,
   redeemRewards: redeemRewards$1,
@@ -3665,6 +3691,7 @@ const en$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   wednesday: wednesday$1,
   welcomeMessage: welcomeMessage$1,
   welcomeTitle: welcomeTitle$1,
+  willing: willing$1,
   youAreHere: youAreHere$1,
   yourIntroduction: yourIntroduction$1,
   yourRewardPoints: yourRewardPoints$1
@@ -3926,8 +3953,12 @@ var confirm = "確認";
 var acceptHelp = "已同意";
 var meetingTime = "約定時間";
 var send = "傳送";
-var sendHelp = "請求幫助";
+var sendHelp = "發起幫助";
 var startChat = "開始對話";
+var willing = "願意幫助";
+var giveRating = "留下你的評價";
+var ratingMarks = "分數";
+var ratingComment = "留言";
 const zh = {
 	neighbourHood: neighbourHood,
 	login: login,
@@ -4189,7 +4220,11 @@ const zh = {
 	meetingTime: meetingTime,
 	send: send,
 	sendHelp: sendHelp,
-	startChat: startChat
+	startChat: startChat,
+	willing: willing,
+	giveRating: giveRating,
+	ratingMarks: ratingMarks,
+	ratingComment: ratingComment
 };
 
 const zh$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -4287,6 +4322,7 @@ const zh$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   general: general,
   geolocationNotSupported: geolocationNotSupported,
   gettingLocation: gettingLocation,
+  giveRating: giveRating,
   help: help,
   helpCenter: helpCenter,
   helpCenterComingSoon: helpCenterComingSoon,
@@ -4387,6 +4423,8 @@ const zh$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   questNotifications: questNotifications,
   questRequests: questRequests,
   questUpdatedSuccess: questUpdatedSuccess,
+  ratingComment: ratingComment,
+  ratingMarks: ratingMarks,
   recentPosts: recentPosts,
   redeem: redeem,
   redeemRewards: redeemRewards,
@@ -4450,6 +4488,7 @@ const zh$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   wednesday: wednesday,
   welcomeMessage: welcomeMessage,
   welcomeTitle: welcomeTitle,
+  willing: willing,
   youAreHere: youAreHere,
   yourIntroduction: yourIntroduction,
   yourRewardPoints: yourRewardPoints

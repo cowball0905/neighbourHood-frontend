@@ -4,7 +4,7 @@
         {{ props.time? new Date(props.time).toLocaleString('en'): "null"}}
     </div>
     <div class="msg">
-       {{ props.accepterName }} accepted the help
+       {{ props.accepterName }} {{ $t('acceptHelp') }}
     </div>
 </div>
 </template>
@@ -41,8 +41,6 @@
 </style>
 
 <script lang="ts" setup>
-import { sendMessage } from '~/api/message';
-import { MessageType } from '~/types/message';
 
 const props = defineProps({
     time: Object as PropType<Date>,

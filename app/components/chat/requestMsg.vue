@@ -4,10 +4,10 @@
         {{ props.time? new Date(props.time).toLocaleString('en'): "null"}}
     </div>
     <div class="msg">
-       <p>{{ props.requestorName }} is willing to help<br/>
+       <p>{{ props.requestorName }} {{ $t('willing') }}<br/>
        <span>{{ props.helpTime }}</span></p>
     <div class="msg-footer">
-        <el-button text @click="handleRequest()" :disabled="isAccepter? false: true">Accept</el-button>
+        <el-button text @click="handleRequest()" v-if="isAccepter">Accept</el-button>
     </div>
     </div>
 </div>

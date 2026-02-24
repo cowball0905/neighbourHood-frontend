@@ -10,7 +10,7 @@
                                     {{ post?.title }}
                                 </p>
                                 <div class="name-time">
-                                    <p class="post-username">{{ post?.user?.username }}</p>
+                                    <NuxtLink :to="`/profile/${post?.user?.uuid}`"><p class="post-username">{{ post?.user?.username }}</p></NuxtLink>
                                     <p class="post-time">
                                         {{ post?.createTime? new Date(post?.createTime).toLocaleString('en'): "" }}
                                     </p>
@@ -28,10 +28,10 @@
                             </div>
                         </div>
                         <div class="post-right">
+                            <StartChatDialog class="start-chat" v-if="isOwnPost()" :postAuthorUuid="post?.user?.uuid" :postID="post?.id"><el-button style="width: 100%">{{ $t('startChat') }}</el-button></StartChatDialog>
                             <p class="post-time">
-                                {{ post?.startTime ? formatTime(new Date(post?.startTime)): "" }} - {{ post?.endTime ? formatTime(new Date(post?.endTime)): "" }}
+                                {{$t('timeSelect')}} : {{ post?.startTime ? formatTime(new Date(post?.startTime)): "" }} - {{ post?.endTime ? formatTime(new Date(post?.endTime)): "" }}
                             </p>
-                            <StartChatDialog v-if="isOwnPost()"><el-button>{{ $t('startChat') }}</el-button></StartChatDialog>
                         </div>
                     </div>
                     <el-tag class="tag" size="large">{{ tagValue }}</el-tag>
@@ -64,7 +64,6 @@ import { useAuthStore } from '../../stores/useAuthStore';
 
 const {t} = useI18n();
 const {subscribe,unsubscribe} = useSocket();
-const router = useRouter();
 const route = useRoute();
 const {id} = route.params
 const post = ref<Post>()
@@ -124,6 +123,9 @@ const isOwnPost = () =>{
 </script>
 
 <style scoped>
+a{
+    text-decoration: none;
+}
 .post-right{
     border: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
