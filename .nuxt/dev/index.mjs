@@ -2020,7 +2020,7 @@ const _JCiN1CBZikAM0iqo0si5zwwafSNb4s8i12Bx07JD_QU = defineNitroPlugin(async (ni
     const localeSegment = detector.route(event.path);
     const pathLocale = isSupportedLocale(localeSegment) && localeSegment || void 0;
     const path = (pathLocale && url.pathname.slice(pathLocale.length + 1)) ?? url.pathname;
-    if (!url.pathname.includes("/_i18n/wE7P6gdy") && !isExistingNuxtRoute(path)) {
+    if (!url.pathname.includes("/_i18n/X_aLRo1D") && !isExistingNuxtRoute(path)) {
       return;
     }
     const resolved = resolveRedirectPath(event, path, pathLocale, ctx.vueI18nOptions.defaultLocale, detector);
@@ -2122,22 +2122,7 @@ _JCiN1CBZikAM0iqo0si5zwwafSNb4s8i12Bx07JD_QU,
 _DmqJjox89VGizsNHjSwxP1TmkjEMYn4wvjPmsqBQEuM
 ];
 
-const assets = {
-  "/index.mjs": {
-    "type": "text/javascript; charset=utf-8",
-    "etag": "\"272ff-1z1GiQ05VQgIKW/NH1A/Xn8FI5k\"",
-    "mtime": "2026-02-24T02:36:09.929Z",
-    "size": 160511,
-    "path": "index.mjs"
-  },
-  "/index.mjs.map": {
-    "type": "application/json",
-    "etag": "\"68969-pDTwT8STT8v/Mk3tGbPTRyfzUIU\"",
-    "mtime": "2026-02-24T02:36:09.929Z",
-    "size": 428393,
-    "path": "index.mjs.map"
-  }
-};
+const assets = {};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));

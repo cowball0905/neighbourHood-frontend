@@ -16,7 +16,7 @@ export interface User {
     uuid: string;
     username: string;
     email: string;
-    house: string;
+    // house: string;
 }
 
 export enum NotificationType{
