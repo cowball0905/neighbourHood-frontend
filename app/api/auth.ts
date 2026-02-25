@@ -1,6 +1,12 @@
 import type { BasicResponse, loginParams, User } from '~/types/common';
 import { useAuthStore } from '../stores/useAuthStore';
-import { axiosInstance, type APIResponse } from './helper';
+import { type APIResponse } from './helper';
+import axios from 'axios';
+import { apiLink } from '~/config/api';
+
+export const axiosInstance = axios.create({
+  baseURL: apiLink
+});
 
 export async function login(params: loginParams): Promise<APIResponse<BasicResponse<string>>> {
   try {
