@@ -36,15 +36,9 @@ declare module 'vue-router' {
 
 
 declare module 'vue-router' {
-  import type { RouteNamedMapI18n } from 'vue-router/auto-routes'
-
-  export interface TypesConfig {
-    RouteNamedMapI18n: RouteNamedMapI18n
-  }
-
   export type RouteMapI18n =
     TypesConfig extends Record<'RouteNamedMapI18n', infer RouteNamedMap> ? RouteNamedMap : RouteMapGeneric
-    
+
   // Prefer named resolution for i18n
   export type RouteLocationNamedI18n<Name extends keyof RouteMapI18n = keyof RouteMapI18n> =
       | Name
@@ -82,8 +76,6 @@ declare module 'vue-router' {
     RouteMapGeneric extends RouteMapI18n
       ? RouteLocationNormalizedLoadedGeneric
       : RouteLocationNormalizedLoadedTypedListI18n<RouteMapI18n>[Name]
-
-  type _LiteralUnion<LiteralType, BaseType extends string = string> = LiteralType | (BaseType & Record<never, never>)
 
   export type RouteLocationAsStringI18n<Name extends keyof RouteMapI18n = keyof RouteMapI18n> =
     RouteMapGeneric extends RouteMapI18n
