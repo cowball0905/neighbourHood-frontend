@@ -1,0 +1,1 @@
+const S=t=>{const r=t.getFullYear().toString().padStart(2,"0"),o=t.getMonth().toString().padStart(2,"0"),n=t.getDay().toString().padStart(2,"0"),a=t.getHours().toString().padStart(2,"0"),g=t.getMinutes().toString().padStart(2,"0");return`${n}/${o}/${r} ${a}:${g}`};export{S as formatTime};
